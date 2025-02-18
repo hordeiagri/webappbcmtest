@@ -4,23 +4,19 @@ if (window.DeviceOrientationEvent) {
         let beta = event.beta;  // Наклон вперед-назад (-180 до 180)
         let gamma = event.gamma; // Наклон влево-вправо (-90 до 90)
 
-        // Ограничиваем диапазон движения
-        let xMove = Math.min(Math.max(gamma, -30), 30); 
-        let yMove = Math.min(Math.max(beta, -30), 30);  
+        // Ограничиваем углы движения
+        let maxTiltX = 20;  // Максимальный наклон по X
+        let maxTiltY = 20;  // Максимальный наклон по Y
 
-        // Применяем смещение фона
-        document.querySelector(".parallax").style.transform = `translate(${xMove * 1.5}px, ${yMove * 1.5}px)`;
+        let xMove = Math.min(Math.max(gamma, -maxTiltX), maxTiltX); 
+        let yMove = Math.min(Math.max(beta, -maxTiltY), maxTiltY);  
+
+        // Уменьшаем силу параллакса (замедляем движение)
+        let intensity = 0.5; // Чем меньше, тем плавнее
+        let translateX = xMove * intensity;
+        let translateY = yMove * intensity;
+
+        // Применяем ограниченное смещение фона
+        document.querySelector(".parallax").style.transform = `translate(${translateX}px, ${translateY}px)`;
     });
 }
-
-// Функция для изменения темы в зависимости от Telegram WebApp
-function applyTelegramTheme() {
-    if (window.Telegram && Telegram.WebApp) {
-        const themeParams = Telegram.WebApp.themeParams;
-        document.body.style.backgroundColor = themeParams.bg_color || "#f5f5f5";
-        document.body.style.color = themeParams.text_color || "#000";
-    }
-}
-
-// Вызываем функцию после загрузки страницы
-document.addEventListener("DOMContentLoaded", applyTelegramTheme);
