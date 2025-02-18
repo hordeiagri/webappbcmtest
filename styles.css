@@ -26,7 +26,8 @@ h1 {
     align-items: center;
     justify-content: space-around;
     transform-style: preserve-3d;
-    animation: rotateCarousel 20s infinite linear;
+    transform: rotateY(0deg);
+    transition: transform 0.5s ease; /* Плавный переход */
 }
 
 .tile {
@@ -34,22 +35,30 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 120px; /* Ширина кнопки */
-    height: 160px; /* Высота кнопки */
+    width: 150px; /* Ширина кнопки */
+    height: 200px; /* Высота кнопки */
     background: white;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease;
     text-decoration: none;
     color: black;
+    opacity: 0.8; /* Прозрачность для кнопок в глубине */
     transform-origin: center center -300px; /* Расположение на оси Z для 3D эффекта */
     transform: rotateY(0deg) translateZ(300px); /* Начальная позиция в глубине */
 }
 
+/* Прозрачность для кнопок на дальнем плане */
+.carousel .tile:nth-child(1) {
+    opacity: 1; /* Кнопка на переднем плане */
+}
+
+/* При наведении кнопки увеличиваются */
 .tile:hover {
     transform: scale(1.1);
+    opacity: 1; /* На переднем плане */
 }
 
 .tile p {
@@ -74,17 +83,7 @@ h1 {
     object-fit: contain;
 }
 
-/* Анимация карусели */
-@keyframes rotateCarousel {
-    0% {
-        transform: rotateY(0deg);
-    }
-    100% {
-        transform: rotateY(360deg); /* Вращение на 360 градусов */
-    }
-}
-
-/* Parallax Background */
+/* Эффект параллакса */
 .parallax {
     position: fixed;
     top: 0;
@@ -100,10 +99,9 @@ h1 {
     z-index: -1;
 }
 
-/* Адаптация под устройства с шириной экрана больше 768px */
 @media (min-width: 768px) {
     .tile {
-        width: 150px;
-        height: 200px;
+        width: 200px;
+        height: 250px;
     }
 }

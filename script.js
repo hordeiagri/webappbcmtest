@@ -18,5 +18,28 @@ if (window.DeviceOrientationEvent) {
 
         // Применяем ограниченное смещение фона
         document.querySelector(".parallax").style.transform = `translate(${translateX}px, ${translateY}px)`;
+
+        // Изменение угла карусели при свайпе
+        let currentAngle = 0;
+        const totalItems = document.querySelectorAll('.carousel .tile').length;
+        const carousel = document.querySelector('.carousel');
+
+        // Функция для смены угла карусели
+        function rotateCarousel() {
+            carousel.style.transform = `rotateY(${currentAngle}deg)`;
+        }
+
+        // Переключение на следующую кнопку
+        document.querySelector('.next-btn').addEventListener('click', function() {
+            currentAngle -= 45; // Поворачиваем на 45 градусов влево
+            rotateCarousel();
+        });
+
+        // Переключение на предыдущую кнопку
+        document.querySelector('.prev-btn').addEventListener('click', function() {
+            currentAngle += 45; // Поворачиваем на 45 градусов вправо
+            rotateCarousel();
+        });
+
     });
 }
