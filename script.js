@@ -1,5 +1,26 @@
 // Проверяем, поддерживает ли устройство события ориентации
 if (window.DeviceOrientationEvent) {
+    let currentAngle = 0;
+    const totalItems = document.querySelectorAll('.carousel .tile').length;
+    const carousel = document.querySelector('.carousel');
+
+    // Функция для смены угла карусели
+    function rotateCarousel() {
+        carousel.style.transform = `rotateY(${currentAngle}deg)`;
+    }
+
+    // Обработчики для кнопок "Следующий" и "Предыдущий"
+    document.querySelector('.next-btn').addEventListener('click', function() {
+        currentAngle -= 45; // Поворачиваем на 45 градусов влево
+        rotateCarousel();
+    });
+
+    document.querySelector('.prev-btn').addEventListener('click', function() {
+        currentAngle += 45; // Поворачиваем на 45 градусов вправо
+        rotateCarousel();
+    });
+
+    // Обработчик события ориентации устройства
     window.addEventListener("deviceorientation", function(event) {
         let beta = event.beta;  // Наклон вперед-назад (-180 до 180)
         let gamma = event.gamma; // Наклон влево-вправо (-90 до 90)
@@ -18,28 +39,5 @@ if (window.DeviceOrientationEvent) {
 
         // Применяем ограниченное смещение фона
         document.querySelector(".parallax").style.transform = `translate(${translateX}px, ${translateY}px)`;
-
-        // Изменение угла карусели при свайпе
-        let currentAngle = 0;
-        const totalItems = document.querySelectorAll('.carousel .tile').length;
-        const carousel = document.querySelector('.carousel');
-
-        // Функция для смены угла карусели
-        function rotateCarousel() {
-            carousel.style.transform = `rotateY(${currentAngle}deg)`;
-        }
-
-        // Переключение на следующую кнопку
-        document.querySelector('.next-btn').addEventListener('click', function() {
-            currentAngle -= 45; // Поворачиваем на 45 градусов влево
-            rotateCarousel();
-        });
-
-        // Переключение на предыдущую кнопку
-        document.querySelector('.prev-btn').addEventListener('click', function() {
-            currentAngle += 45; // Поворачиваем на 45 градусов вправо
-            rotateCarousel();
-        });
-
     });
 }
