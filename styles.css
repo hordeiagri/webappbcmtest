@@ -10,49 +10,73 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Контейнер Swiper */
-.swiper-container {
-    width: 100%;
-    height: 80vh; /* Высота для карусели */
-    margin-top: 20px;
-}
-
-/* Вертикальная прокрутка */
-.swiper-wrapper {
+/* Контейнер с кнопками */
+.container {
     display: flex;
-    flex-direction: column; /* Элементы будут располагаться по вертикали */
-    justify-content: center;
-}
-
-.swiper-slide {
-    display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    gap: 25px; /* Увеличенное расстояние между кнопками */
+    max-width: 400px;
+    margin: auto;
+    padding-top: 30px; /* Увеличенный отступ сверху */
+    padding-bottom: 50px; /* Увеличенный отступ снизу */
+}
+
+/* Кнопка */
+.tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%; /* Сделали уже */
     max-width: 350px;
     background: white;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     text-decoration: none;
     color: black;
 }
 
-.swiper-slide:hover {
-    transform: scale(1.05); /* При наведении немного увеличивается */
+.tile:hover {
+    transform: scale(1.05);
 }
 
-/* Параллакс фон */
+/* Обертка для изображения с фиксированным соотношением сторон 4:3 */
+.image-wrapper {
+    width: 100%;
+    padding-top: 75%; /* 4:3 = 75% */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Адаптивное изображение */
+.responsive-img {
+    display: block;
+    max-width: 90%; /* Чтобы изображение не выходило за границы экрана */
+    height: auto; /* Автоматическое сохранение пропорций */
+    margin: 0 auto; /* Центрируем */
+    object-fit: contain; /* Убеждаемся, что картинка сохраняет пропорции */
+}
+
+/* Текст */
+.tile p {
+    margin: 10px 0 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Parallax Background */
 .parallax {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-image: url('images/parallax-bg.jpg');
+    background-image: url('images/parallax-bg.jpg'); /* Замените на свою картинку */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -61,22 +85,9 @@ h1 {
     z-index: -1;
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 767px) {
-    .swiper-container {
-        height: 60vh;
-    }
-    .swiper-slide {
-        max-width: 80%; /* Меньше ширина для мобильных */
-    }
-}
-
-/* Для больших экранов */
-@media (min-width: 1024px) {
-    .swiper-container {
-        height: 70vh; /* Немного уменьшить высоту на больших экранах */
-    }
-    .swiper-slide {
-        max-width: 300px; /* Уменьшить ширину слайдов для больших экранов */
+/* Адаптация под устройства с шириной экрана больше 768px */
+@media (min-width: 768px) {
+    .responsive-img {
+        max-width: 50%; /* Ограничиваем ширину на больших экранах */
     }
 }
