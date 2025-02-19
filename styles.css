@@ -1,3 +1,4 @@
+/* Основной стиль для body */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -28,9 +29,9 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80%; /* Сделали уже */
+    width: 90%; /* Сделали уже */
     max-width: 350px;
-    background: white;
+    background: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -44,10 +45,10 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Обертка для изображения с фиксированным соотношением сторон 4:3 */
+/* Обертка для изображения с соотношением сторон 16:9 */
 .image-wrapper {
     width: 100%;
-    padding-top: 75%; /* 4:3 = 75% */
+    padding-top: 56.25%; /* 16:9 = 56.25% */
     position: relative;
     overflow: hidden;
     border-radius: 8px;
@@ -56,10 +57,10 @@ h1 {
 /* Адаптивное изображение */
 .responsive-img {
     display: block;
-    max-width: 90%; /* Чтобы изображение не выходило за границы экрана */
-    height: auto; /* Автоматическое сохранение пропорций */
-    margin: 0 auto; /* Центрируем */
-    object-fit: contain; /* Убеждаемся, что картинка сохраняет пропорции */
+    width: 100%; /* Растягиваем на всю ширину родительского контейнера */
+    height: 100%;
+    object-fit: cover; /* Заполняем контейнер, сохраняя пропорции */
+    border-radius: 8px;
 }
 
 /* Текст */
