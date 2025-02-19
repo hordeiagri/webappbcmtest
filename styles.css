@@ -10,80 +10,42 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Контейнер карусели */
-.carousel-container {
-    position: relative;
-    width: 80%;
-    max-width: 700px;
-    margin: auto;
-    perspective: 1000px; /* Эффект глубины */
+/* Контейнер Swiper */
+.swiper-container {
+    width: 100%;
+    height: 80vh; /* Высота для карусели */
+    margin-top: 20px;
 }
 
-.carousel {
+/* Вертикальная прокрутка */
+.swiper-wrapper {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-around;
-    transform-style: preserve-3d;
-    transform: rotateY(0deg);
-    transition: transform 0.5s ease; /* Плавный переход */
+    flex-direction: column; /* Элементы будут располагаться по вертикали */
+    justify-content: center;
 }
 
-.tile {
+.swiper-slide {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 150px; /* Ширина кнопки */
-    height: 200px; /* Высота кнопки */
+    width: 80%;
+    max-width: 350px;
     background: white;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, opacity 0.3s ease;
+    transition: transform 0.3s ease-in-out;
     text-decoration: none;
     color: black;
-    opacity: 0.8; /* Прозрачность для кнопок в глубине */
-    transform-origin: center center -300px; /* Расположение на оси Z для 3D эффекта */
-    transform: rotateY(0deg) translateZ(300px); /* Начальная позиция в глубине */
 }
 
-/* Прозрачность для кнопок на дальнем плане */
-.carousel .tile:nth-child(1) {
-    opacity: 1; /* Кнопка на переднем плане */
+.swiper-slide:hover {
+    transform: scale(1.05); /* При наведении немного увеличивается */
 }
 
-/* При наведении кнопки увеличиваются */
-.tile:hover {
-    transform: scale(1.1);
-    opacity: 1; /* На переднем плане */
-}
-
-.tile p {
-    margin: 10px 0 0;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.image-wrapper {
-    width: 100%;
-    padding-top: 75%; /* 4:3 */
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.responsive-img {
-    display: block;
-    max-width: 90%;
-    height: auto;
-    margin: 0 auto;
-    object-fit: contain;
-}
-
-/* Эффект параллакса */
+/* Параллакс фон */
 .parallax {
     position: fixed;
     top: 0;
@@ -99,9 +61,22 @@ h1 {
     z-index: -1;
 }
 
-@media (min-width: 768px) {
-    .tile {
-        width: 200px;
-        height: 250px;
+/* Адаптивность для мобильных устройств */
+@media (max-width: 767px) {
+    .swiper-container {
+        height: 60vh;
+    }
+    .swiper-slide {
+        max-width: 80%; /* Меньше ширина для мобильных */
+    }
+}
+
+/* Для больших экранов */
+@media (min-width: 1024px) {
+    .swiper-container {
+        height: 70vh; /* Немного уменьшить высоту на больших экранах */
+    }
+    .swiper-slide {
+        max-width: 300px; /* Уменьшить ширину слайдов для больших экранов */
     }
 }
