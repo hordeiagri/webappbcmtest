@@ -4,14 +4,14 @@ if (window.DeviceOrientationEvent) {
         let gamma = event.gamma; // Наклон влево-вправо (-90 до 90)
 
         // Ограничиваем углы движения
-        let maxTiltX = 5;  // Максимальный наклон по X
-        let maxTiltY = 5;  // Максимальный наклон по Y
+        let maxTiltX = 20;  // Максимальный наклон по X
+        let maxTiltY = 20;  // Максимальный наклон по Y
 
         let xMove = Math.min(Math.max(gamma, -maxTiltX), maxTiltX); 
         let yMove = Math.min(Math.max(beta, -maxTiltY), maxTiltY);  
 
         // Уменьшаем силу параллакса (замедляем движение)
-        let intensity = 1; // Чем меньше, тем плавнее
+        let intensity = 0.75; // Чем меньше, тем плавнее
         let translateX = xMove * intensity;
         let translateY = yMove * intensity;
 
