@@ -17,7 +17,7 @@ body {
     height: 100vh; /* 100% высоты экрана */
     overflow: hidden;
     background-image: url('images/parallax-bg.jpg');
-    background-size: cover;
+    background-size: 120% auto;
     background-position: center center;
     background-repeat: no-repeat;
     z-index: -1;
