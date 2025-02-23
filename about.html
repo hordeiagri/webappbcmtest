@@ -11,7 +11,7 @@
             background-color: #f5f5f5;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             height: 100vh;
             overflow: hidden;
         }
@@ -25,8 +25,9 @@
         }
 
         img {
-            width: 100%;  /* Ширина изображения подстраивается под экран */
-            height: auto; /* Убираем сохранение пропорций */
+            max-width: 100%;
+            height: auto;
+            object-fit: contain; /* Сохранение пропорций */
         }
     </style>
 </head>
