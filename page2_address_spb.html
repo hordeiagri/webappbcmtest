@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPb</title>
+    <style>
+        /* Стили для текста с сохранением переносов строк */
+        p {
+            white-space: pre-line;
+        }
+
+        /* Основные стили для body */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--tg-theme-bg-color, #f5f5f5); /* Зависит от темы Telegram */
+            color: var(--tg-theme-text-color, black); /* Цвет текста зависит от темы */
+        }
+
+        /* Контейнер для изображений */
+        .image-container {
+            display: flex;
+            flex-direction: column; /* Изображения идут сверху вниз */
+            align-items: center; /* Центрирование */
+            gap: 10px; /* Отступ между изображениями */
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 90%; /* Адаптивная ширина */
+            max-width: 600px; /* Ограничение ширины */
+            border-radius: 10px; /* Закругление углов */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+        }
+
+        /* Кнопка "Назад" */
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            background-color: var(--tg-theme-button-color, #0088cc);
+            color: var(--tg-theme-button-text-color, white);
+            transition: background 0.2s ease-in-out;
+        }
+
+        /* Эффект наведения на кнопку */
+        .back-btn:hover {
+            background-color: var(--tg-theme-secondary-bg-color, #005f99);
+        }
+    </style>
+</head>
+<body>
+    <h1>Санкт-Петербург</h1>
+
+    <!-- Контейнер для изображений -->
+    <div class="image-container">
+        <img src="images/placeholder1_address.jpg" alt="Санкт-Петербург 1">
+        <img src="images/placeholder2_address.jpg" alt="Санкт-Петербург 2">
+    </div>
+
+    <!-- Текст с описанием -->
+    <p>
+        Санкт-Петербург – русский портовый город на побережье Балтийского моря, который в течение двух веков служил столицей Российской империи.
+    </p>
+
+    <!-- Кнопка "Назад" -->
+    <a href="index_addresses.html" class="back-btn">👈 Назад</a>
+</body>
+</html>
