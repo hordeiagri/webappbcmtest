@@ -7,36 +7,25 @@ body {
     height: 100vh;
     overflow: hidden;
     margin: 0;
-    position: relative;
-}
-
-/* Параллакс фон */
-.parallax {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('images/parallax-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    transition: transform 0.1s ease-out;
+    perspective: 1000px;
 }
 
 .carousel-container {
     position: relative;
-    width: 300px;
+    width: 100%;
+    max-width: 600px;
     height: 300px;
-    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .carousel {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.8s ease-out;
+    transition: transform 0.5s ease-in-out;
 }
 
 .tile {
@@ -60,30 +49,12 @@ body {
     border-radius: 10px;
 }
 
-.active {
-    transform: scale(1.2);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-.controls {
+.tile span {
     position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 20px;
-}
-
-.btn {
-    padding: 10px 20px;
-    background: #333;
+    bottom: -30px;
+    font-size: 18px;
     color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.btn:hover {
-    background: #555;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    pointer-events: none;
 }
