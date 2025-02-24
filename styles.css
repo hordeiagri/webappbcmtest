@@ -13,11 +13,11 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 120vw;  /* 120% ширины экрана */
-    height: 120vh; /* 120% высоты экрана */
+    width: 100vw;  /* 100% ширины экрана */
+    height: 100vh; /* 100% высоты экрана */
     overflow: hidden;
     background-image: url('images/parallax-bg.jpg');
-    background-size: 120% auto;
+    background-size: calc(120vw) calc(120vh);
     background-position: center center;
     background-repeat: no-repeat;
     z-index: -1;
