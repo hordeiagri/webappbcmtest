@@ -3,22 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perspective Carousel</title>
+    <title>Web App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="parallax"></div> <!-- Фон с параллаксом -->
 
-    <div class="carousel-container">
-        <div class="carousel">
-            <div class="tile" data-link="page1.html"><span>Москва</span></div>
-            <div class="tile" data-link="page2.html"><span>Санкт-Петербург</span></div>
-            <div class="tile" data-link="page3.html"><span>Екатеринбург</span></div>
-            <div class="tile" data-link="page4.html"><span>Новосибирск</span></div>
-            <div class="tile" data-link="page5.html"><span>Казань</span></div>
-            <div class="tile" data-link="page6.html"><span>Самара</span></div>
-            <div class="tile" data-link="page7.html"><span>Нижний Новгород</span></div>
-            <div class="tile" data-link="page8.html"><span>Сочи</span></div>
-        </div>
+    <h1>Выбери город</h1>
+    <div class="container">
+        <a href="page1_moscow.html" class="tile">
+            <div class="image-wrapper">
+                <img src="images/moscow.jpg" alt="Москва" class="responsive-img">
+            </div>
+            <p>Москва</p>
+        </a>
+        <a href="page2_spb.html" class="tile">
+            <div class="image-wrapper">
+                <img src="images/spb.jpg" alt="Санкт-Петербург" class="responsive-img">
+            </div>
+            <p>Санкт-Петербург</p>
+        </a>
+        <a href="page3_ekb.html" class="tile">
+            <div class="image-wrapper">
+                <img src="images/ekb.jpg" alt="Екатеринбург" class="responsive-img">
+            </div>
+            <p>Екатеринбург</p>
+        </a>
+        <a href="page4_nsk.html" class="tile">
+            <div class="image-wrapper">
+                <img src="images/novosibirsk.jpg" alt="Новосибирск" class="responsive-img">
+            </div>
+            <p>Новосибирск</p>
+        </a>
+        <a href="page5_kazan.html" class="tile">
+            <div class="image-wrapper">
+                <img src="images/kazan.jpg" alt="Казань" class="responsive-img">
+            </div>
+            <p>Казань</p>
+        </a>
+        <a href="page6_samara.html" class="tile">
+            <div class="image-wrapper">
+                <img src="images/samara.jpg" alt="Самара" class="responsive-img">
+            </div>
+            <p>Самара</p>
+        </a>
+        <a href="page7_nn.html" class="tile">
+            <div class="image-wrapper">
+                <img src="images/nnovgorod.jpg" alt="Нижний Новгород" class="responsive-img">
+            </div>
+            <p>Нижний Новгород</p>
+        </a>
+        <a href="page8_sochi.html" class="tile">
+            <div class="image-wrapper">
+                <img src="images/sochi.jpg" alt="Сочи" class="responsive-img">
+            </div>
+            <p>Сочи</p>
+        </a>
     </div>
 
     <script src="script.js"></script>

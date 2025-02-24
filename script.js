@@ -1,51 +1,21 @@
-const carousel = document.querySelector(".carousel");
-const tiles = document.querySelectorAll(".tile");
+if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", function(event) {
+        let beta = event.beta;  // Наклон вперед-назад (-180 до 180)
+        let gamma = event.gamma; // Наклон влево-вправо (-90 до 90)
 
-const totalTiles = tiles.length;
-let angle = 0;
-const step = 40; // Угол расхождения элементов
+        // Ограничиваем углы движения
+        let maxTiltX = 10;  // Максимальный наклон по X
+        let maxTiltY = 10;  // Максимальный наклон по Y
 
-function updateCarousel() {
-    tiles.forEach((tile, index) => {
-        const rotation = (index - totalTiles / 2) * step + angle;
-        const radian = (rotation * Math.PI) / 180;
-        const y = Math.sin(radian) * 100;
-        const z = Math.cos(radian) * 300;
-        tile.style.transform = `translate3d(0, ${y}px, ${z}px) rotateX(${rotation}deg)`;
+        let xMove = Math.min(Math.max(gamma, -maxTiltX), maxTiltX); 
+        let yMove = Math.min(Math.max(beta, -maxTiltY), maxTiltY);  
+
+        // Уменьшаем силу параллакса (замедляем движение)
+        let intensity = 0.5; // Чем меньше, тем плавнее
+        let translateX = xMove * intensity;
+        let translateY = yMove * intensity;
+
+        // Применяем ограниченное смещение фона
+        document.querySelector(".parallax").style.transform = `translate(${translateX}px, ${translateY}px)`;
     });
 }
-
-let startY = 0;
-let isDragging = false;
-
-carousel.addEventListener("touchstart", (e) => {
-    startY = e.touches[0].clientY;
-    isDragging = true;
-});
-
-carousel.addEventListener("touchmove", (e) => {
-    if (!isDragging) return;
-    let moveY = e.touches[0].clientY;
-    if (moveY - startY > 30) {
-        angle += step;
-        updateCarousel();
-        isDragging = false;
-    } else if (startY - moveY > 30) {
-        angle -= step;
-        updateCarousel();
-        isDragging = false;
-    }
-});
-
-carousel.addEventListener("touchend", () => {
-    isDragging = false;
-});
-
-// Переход по страницам
-tiles.forEach(tile => {
-    tile.addEventListener("click", () => {
-        window.location.href = tile.dataset.link;
-    });
-});
-
-updateCarousel();
