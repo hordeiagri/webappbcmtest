@@ -67,6 +67,8 @@ h1 {
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     text-decoration: none;
+    margin: 0; /* Убираем отступ */
+    padding: 0; /* Убираем отступ */
 }
 
 /* Кнопка при наведении */
@@ -80,6 +82,8 @@ h1 {
     height: 100%;
     position: relative;
     overflow: hidden;
+    margin: 0; /* Убираем отступ */
+    padding: 0; /* Убираем отступ */
 }
 
 /* Адаптивное изображение */
@@ -88,6 +92,7 @@ h1 {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    display: block; /* Это гарантирует отсутствие лишнего пространства */
 }
 
 /* Название городов под кнопками */
